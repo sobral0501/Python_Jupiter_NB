@@ -32,3 +32,35 @@ class Car:
         
     def fill_gas_tank(self):
         print(f'This car holds {self.gas_tank} gallons of gas.')
+        
+######################################################################
+"""A set of classes used to represent gas and electric cars."""
+
+class Battery:
+    
+    def __init__(self, battery_size=75):
+        self.battery_size = battery_size
+        
+    def describe_battery(self):
+        print(f"This car has a {self.battery_size}-kWh battery.")
+        
+    def get_range(self):
+        if self.battery_size == 75:
+            range = 260
+        elif self.battery_size == 100:
+            range = 315
+        print(f"This car can go about {range} miles on a full charge.")
+        
+    def upgrade_battery(self):
+        if self.battery_size == 75:
+            self.battery_size = 100
+        print(f'The battery size is :{self.battery_size}')
+                
+###########################################################################
+class ElectricCar(Car):
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)   #===> initialize attributes of the parent class.
+        self.battery = Battery()
+       
+    def fill_gas_tank(self):
+        print(f"This car doesn't need a gas tank.")
